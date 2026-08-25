@@ -9,15 +9,15 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - name: 检出仓库
         uses: actions/checkout@v5
 
-      - name: 随机延时（仅定时触发，最高 2 小时）
+      - name: 随机延时（仅定时触发，最高 20 分钟）
         if: github.event_name == 'schedule'
         run: |
-          $delay = Get-Random -Minimum 0 -Maximum 7201
+          $delay = Get-Random -Minimum 0 -Maximum 1201
           Write-Output "随机延时: ${delay}s ($([math]::Round($delay/60, 1)) 分钟)"
           Start-Sleep -Seconds $delay
         shell: pwsh
