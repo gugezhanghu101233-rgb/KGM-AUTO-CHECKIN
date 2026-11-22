@@ -2,8 +2,8 @@ name: 仓库保活
 
 on:
   schedule:
-    # 每月 1 号运行一次，避免仓库未更新导致 Actions 被禁用
-    - cron: '0 0 1 * *'
+    # 每周日 UTC 0:00 运行一次（北京时间 8:00）
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -48,3 +48,4 @@ jobs:
             git push
             echo "保活提交成功"
           fi
+          chore: 保活改为每周一次
