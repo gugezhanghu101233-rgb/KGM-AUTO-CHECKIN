@@ -2,8 +2,8 @@ name: 仓库保活
 
 on:
   schedule:
-    # 每周日 UTC 0:00 运行一次（北京时间 8:00）
-    - cron: '0 0 * * 0'
+    # 每周六 UTC 18:08 运行一次（北京时间 2:08）
+    - cron: '8 18 * * 6'
   workflow_dispatch:
 
 jobs:
