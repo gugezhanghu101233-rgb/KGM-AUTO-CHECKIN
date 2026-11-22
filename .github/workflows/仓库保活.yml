@@ -48,4 +48,10 @@ jobs:
             git push
             echo "保活提交成功"
           fi
-          chore: 保活改为每周一次
+                    
+      - name: 发送 Server酱 通知
+        if: always()
+        run: |
+          curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SERVERCHAN_SENDKEY }}.send" \
+               -d "title=仓库保活任务已完成" \
+               -d "desp=保活运行状态: ${{ job.status }}。请前往 Actions 查看详情。"
